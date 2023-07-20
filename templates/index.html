@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load item_tags %}
+{% load crispy_forms_filters %}
+
+{% block css %}
+    <style>
+
+        .table-container {
+            height: auto; /* Set the desired height */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            scrollbar-width: thin; /* Set the width of the scrollbar */
+            scrollbar-color: #888888 #f0f0f0; /* Set the color of the scrollbar */
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header color-dark fw-500">
+                    Reports
+                </div>
+                <div class="card-body p-0">
+                    <div class="table4 p-25 mb-30 table-container">
+                        <div class="table-container">
+                            <table class="table mb-0">
+                                <thead>
+                                <tr class="userDatatable-header">
+                                    <th>
+                                        <span class="userDatatable-title">Counter</span>
+                                    </th>
+                                    <th>
+                                        <span class="userDatatable-title">Name</span>
+                                    </th>
+
+                                    <th>
+                                        <span class="userDatatable-title">Status</span>
+                                    </th>
+                                    <th>
+                                        <span class="userDatatable-title">Timestamp</span>
+                                    </th>
+
+                                    <th>
+                                        <span class="userDatatable-title">Action</span>
+                                    </th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for item in reports %}
+                                    <tr>
+                                        <td>
+                                            <div class="userDatatable-content">
+                                                <a href="{% url "report_detail" item.id %}"> {{ forloop.counter }}</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+                                                <a href="{% url "report_detail" item.id %}">{{ item.name }}</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+                                                {% if item.status == "SUCCESS" %}
+                                                    <h4 class="badge  badge-dot--big"
+                                                        style="background-color: #1B3F7F; border-radius: 2px; width: 70px">{{ item.status }}
+                                                    </h4>
+                                                {% else %}
+                                                    <h4 class="badge  badge-dot--big"
+                                                        style="background-color: #9D2154; border-radius: 2px; width: 70px">{{ item.status }}
+                                                    </h4>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+                                                {{ item.timestamp }}
+                                            </div>
+                                        </td>
+
+                                        <td
+                                                class="d-flex ">
+
+                                            <form action="{% url 'report_delete' %}" method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden" value="{{ item.id }}"
+                                                       name="report_id">
+
+                                                <button type="submit"
+                                                        style="border: none; background: none; padding: 0;">
+                                                    <i class="uil uil-trash-alt" style="color: #9D2154;"></i>
+                                                </button>
+
+                                            </form>
+
+                                            <a href="#"
+                                               class=" " style="box-shadow: none;">
+
+                                                <i class="uil uil-file-download" style="color: #1B3F7F"></i>
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+
+                                {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-end pt-30">
+                                <nav class="dm-page ">
+                                    <ul class="dm-pagination d-flex">
+                                        {% if is_paginated %}
+                                            <li class="dm-pagination__item">
+                                                {% if page_obj.has_previous %}
+                                                    <a href="{% paginate_url page_obj.previous_page_number 'page' request.GET.urlencode %}"
+                                                       class="dm-pagination__link pagination-control"><span
+                                                            class="la la-angle-left"></span></a>
+                                                {% else %}
+                                                    <a href="#" class="dm-pagination__link pagination-control"><span
+                                                            class="la la-angle-left"></span></a>
+                                                {% endif %}
+                                                {% get_proper_elided_page_range paginator page_obj.number as page_range %}
+                                                {% for i in page_range %}
+                                                    {% if page_obj.number == i %}
+                                                        <a href="#" class="dm-pagination__link active"><span
+                                                                class="page-number">{{ i }}</span></a>
+                                                    {% else %}
+                                                        <a href="{% paginate_url i 'page' request.GET.urlencode %}"
+                                                           class="dm-pagination__link"><span
+                                                                class="page-number">{{ i }}</span></a>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% if page_obj.has_next %}
+                                                    <a href="{% paginate_url page_obj.next_page_number 'page' request.GET.urlencode %}"
+                                                       class="dm-pagination__link pagination-control"><span
+                                                            class="la la-angle-right"></span></a>
+                                                {% else %}
+                                                    <a href="#" class="dm-pagination__link pagination-control"><span
+                                                            class="la la-angle-right"></span></a>
+
+                                                {% endif %}
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+
+
+{% block script %}
+
+{% endblock %}

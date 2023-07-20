@@ -1,0 +1,11 @@
+from deepface import DeepFace
+
+# download the deepface model
+DeepFace.build_model("Gender")
+DeepFace.build_model("Emotion")
+
+# for extracting the faces we need the retina model
+from retinaface import RetinaFace
+
+# download the retina face model
+RetinaFace.build_model()

@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <style>
+
+
+        #video-container {
+            position: relative;
+            height: 100%;
+        }
+
+        #video-element {
+            width: 100%;
+            height: calc(100% - 56px); /* Adjust the height based on your navbar height */
+            object-fit: cover;
+        }
+
+        #start-button,
+        #stop-button {
+            margin: 5px;
+        }
+
+        .overlay-buttons {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        video {
+            height: 80vh !important;
+            object-fit: contain !important;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div id="video-container">
+        <video id="video-element" autoplay></video>
+        <div class="overlay-buttons">
+            <button id="start-button" class="btn btn-primary">Start</button>
+            <button id="stop-button" class="btn btn-danger">Stop</button>
+        </div>
+    </div>
+
+    {% csrf_token %}
+{% endblock %}
+
+
+{% block script %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sidebarToggle = document.querySelector(".sidebar-toggle");
+            sidebarToggle.click(); // Simulate a click on the sidebar toggle
+            // click the start button
+            var startButton = document.querySelector("#start-button");
+            startButton.click()
+        });
+    </script>
+    <script>
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <script>
+
+        function resizeVideo() {
+            var videoContainer = document.getElementById("video-container");
+            var width = videoContainer.offsetWidth;
+            var height = videoContainer.offsetHeight;
+
+            videoElement.style.width = width + "px";
+            videoElement.style.height = height + "px";
+        }
+
+        window.addEventListener("resize", resizeVideo);
+
+        var videoElement = document.getElementById("video-element");
+        var startButton = document.getElementById("start-button");
+        var stopButton = document.getElementById("stop-button");
+        var stream;
+
+        // Start the video stream when the start button is clicked
+        startButton.addEventListener("click", function () {
+            // Request permission to access the camera
+            navigator.mediaDevices.getUserMedia({video: true})
+                .then(function (mediaStream) {
+                    stream = mediaStream;
+                    videoElement.srcObject = mediaStream;
+                })
+                .catch(function (error) {
+                    console.log("Error accessing camera:", error);
+                });
+        });
+
+        // Stop the video stream when the stop button is clicked
+        stopButton.addEventListener("click", function () {
+            if (stream) {
+                var tracks = stream.getTracks();
+                tracks.forEach(function (track) {
+                    track.stop();
+                });
+                videoElement.srcObject = null;
+            }
+        });
+
+        // Send the video stream to the server
+        // Send the video stream to the server
+        videoElement.addEventListener("play", function () {
+            var canvas = document.createElement("canvas");
+            var context = canvas.getContext("2d");
+
+            // Set the initial size of the canvas to match the video element's dimensions
+            canvas.width = videoElement.offsetWidth;
+            canvas.height = videoElement.offsetHeight;
+
+            function sendVideoFrame() {
+                if (videoElement.paused || videoElement.ended) {
+                    return;
+                }
+
+                // Resize the canvas to match the video element's dimensions
+                if (canvas.width !== videoElement.offsetWidth || canvas.height !== videoElement.offsetHeight) {
+                    canvas.width = videoElement.offsetWidth;
+                    canvas.height = videoElement.offsetHeight;
+                }
+
+                context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                var frame = canvas.toDataURL("image/jpeg");
+
+                // Send the frame data to the server using an AJAX request
+                // Replace "your-server-url" with the actual URL to the server endpoint
+                fetch("{% url "process_video_frame" id %}", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json", 'X-CSRFToken': csrftoken},
+                    body: JSON.stringify({frame: frame})
+                })
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        // Process the server's response if needed
+                        console.log(data);
+                    })
+                    .catch(function (error) {
+                        console.log("Error sending video frame:", error);
+                    });
+            }
+
+            // Call the sendVideoFrame() function immediately to send the first frame
+            sendVideoFrame();
+
+            // Set the interval to call the sendVideoFrame() function every 10 seconds
+            // this is 10 seconds --> 10000
+            setInterval(sendVideoFrame, 10000);
+        });
+
+    </script>
+{% endblock %}
+

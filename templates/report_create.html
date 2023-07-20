@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="col-12 my-5">
+        <div class="card">
+            <div class="card-header color-dark fw-500">
+                New Class
+            </div>
+            <div class="card-body p-0">
+                <form action="{% url "report_create" %}" method="post">
+                    {% csrf_token %}
+
+                    <div class="row px-3 mx-auto">
+                        <div class="col-12 col-md-4 form-group mb-md-5 mt-2">
+                            <label>Project Name</label>
+                            <input class="form-control form-control-lg" type="text" name="name"
+                                   placeholder="Rent roll name">
+                        </div>
+
+
+                        <div class="col-12 col-md-4 form-group  mb-md-5  mt-2">
+                            <label>{{ "" }}</label>
+                            <button type="submit"
+                                    class="btn btn-lg btn-danger btn-submit" style="background-color:#9D2154">Start
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,332 @@
+{% extends "base.html" %}
+{% load static %}
+{% load item_tags %}
+
+
+{% block content %}
+    <div class="demo4 crm">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-main">
+                        <h4 class="text-capitalize breadcrumb-title">Dashboard</h4>
+                        <div class="breadcrumb-action justify-content-center flex-wrap">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url "dashboard" %}"><i
+                                            class="uil uil-map"></i>Map</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-4 col-lg-6 mb-25">
+                    <div class="card banner-feature banner-feature--danial mb-0 h-100">
+                        <div class="banner-feature__shape">
+                            <img src="{% static 'img/glass-trophy.png' %}" alt="img">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="card-body">
+                                <h1 class="banner-feature__heading color-white">
+                                    Welcome {{ request.user.username|capfirst }}!</h1>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-4 col-lg-6 mb-25">
+                    <div class="card performance-o border-0">
+                        <div class="card-header border-0 pb-0">
+                            <h6>Performance Overview </h6>
+                        </div>
+
+                        <div class="card-body pt-sm-25 pb-25">
+                            <div class="performance-chart">
+                                <div class="">
+                                    <div class="performanceDetails" style="min-height: 281px;">
+                                        <div id="radial-chart"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="performance-chart-labels">
+                                <ul>
+                                    <li class="label-target">Annoyed</li>
+                                    <li class="label-target">Disgust</li>
+                                    <li class="label-target">Happy</li>
+                                    <li class="label-target">Fear</li>
+                                    <li class="label-target">Sad</li>
+                                    <li class="label-target">Surprise</li>
+                                    <li class="label-target">Neutral</li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-5">
+                    <div class="card border-0 px-25 h-100">
+                        <div class="card-header px-0 border-0">
+                            <h6>Recent Classes </h6>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="selling-table-wrap selling-table-wrap--source">
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-borderless">
+                                        <thead>
+
+                                        <tr class="userDatatable-header">
+
+                                            <th>
+                                                <span class="projectDatatable-title">Date</span>
+                                            </th>
+                                            <th>
+                                                <span class="projectDatatable-title">Name</span>
+                                            </th>
+                                            <th>
+                                                <span class="projectDatatable-title">Status</span>
+                                            </th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for item in reports %}
+                                            <tr>
+
+                                                <td>
+                                                    <div class="userDatatable-content--subject" style="
+                                         max-width: 1000px; overflow-wrap: normal;">
+                                                        {{ item.timestamp }}
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content--subject"
+                                                         style="max-width: 200px; overflow: auto;white-space: normal">
+                                                        <a href="{% url "report_detail" item.id %}">
+                                                            {{ item.name }}
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="userDatatable-content--subject"
+                                                         style="max-width: 200px; overflow: auto;white-space: normal">
+                                                        {% if report.status == "ACTIVE" %}
+                                                            <h4 class="badge  badge-dot--big"
+                                                                style="background-color: #1B3F7F; border-radius: 2px; width: 70px">
+                                                                DONE
+                                                            </h4>
+                                                        {% else %}
+                                                            <h4 class="badge  badge-dot--big"
+                                                                style="background-color: #9D2154; border-radius: 2px; width: 70px">
+                                                                PENDING
+                                                            </h4>
+                                                        {% endif %}
+                                                    </div>
+                                                </td>
+
+
+                                            </tr>
+
+
+                                        {% endfor %}
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="card card-default card-md mb-4">
+                        <div class="card-header">
+                            <h6>{% comment %}Scroll automatically{% endcomment %}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="global-slider global-sliders slick-slider slick-dots-bottom"
+                                 data-dots-slick='true'
+                                 data-autoplay-slick='true' autoplay data-autoplay-speed="5000">
+                                <div class="slick-slider__single slick-slider__singles d-flex"
+                                     style="
+                                             background-image: url('{% static "img/dimension_1.png" %}');
+                                             background-size: contain;
+                                             background-repeat: no-repeat;
+                                             background-position: center center;">
+
+                                </div>
+                                <div class="slick-slider__single  slick-slider__singles  d-flex active slick-current slick-active"
+                                     style="
+                                             background-size: contain;
+                                             background-repeat: no-repeat;
+                                             background-position: center center;
+                                             background-image: url('{% static "img/dimension_2.png" %}')">
+
+                                </div>
+                                <div class="slick-slider__single  slick-slider__singles d-flex"
+                                     style="
+                                             background-size: contain;
+                                             background-repeat: no-repeat;
+                                             background-position: center center;
+                                             background-image: url('{% static "img/dimension_3.png" %}')">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block script %}
+    <!-- Include the ApexCharts library -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.3/dist/apexcharts.min.js"></script>
+    <script>
+        function newRadialChart(element, seriesData, width, height = "270") {
+            var chartOptions = {
+                series: seriesData,
+                colors: ["#8231D3", "#00AAFF", "#FA8B0C", "#0c7bfa"],
+                chart: {
+                    width: width,
+                    height: height,
+                    type: "radialBar",
+                    sparkline: {
+                        enabled: true
+                    }
+                },
+                legend: {
+                    show: false
+                },
+                plotOptions: {
+                    radialBar: {
+                        hollow: {
+                            margin: 0,
+                            size: "28%"
+                        },
+                        track: {
+                            show: true,
+                            margin: 11
+                        },
+                        dataLabels: {
+                            show: true,
+                            name: {
+                                offsetY: 20
+                            },
+                            value: {
+                                fontSize: "24px",
+                                fontFamily: '"Jost", sans-serif',
+                                fontWeight: 600,
+                                offsetY: -21
+                            },
+                            total: {
+                                show: true,
+                                label: "Reports",
+                                fontSize: "16px",
+                                fontFamily: '"Jost", sans-serif',
+                                fontWeight: 400,
+                                color: "#404040",
+                                formatter: function (e) {
+                                    return "{{all_twitter_count}}%"
+                                }
+                            }
+                        },
+                        minAngle: 360
+                    }
+                },
+                stroke: {
+                    lineCap: "round"
+                },
+                grid: {
+                    padding: {
+                        to: 0,
+                        right: 0,
+                        bottom: 0,
+                        left: 0
+                    }
+                },
+                labels: ["Disgust",
+                    "Angry",
+                    "Happy",
+                    "Fear",
+                    "Sad",
+                    "Surprise",
+                    "Neutral",]
+            };
+
+            var chartElement = document.querySelector(element);
+            if (chartElement) {
+                var chart = new ApexCharts(chartElement, chartOptions);
+                chart.render();
+            }
+        }
+
+        // Call the newRadialChart function with the container ID, data series, and chart width
+        newRadialChart(".performanceDetails", [{{disgust_count}}, {{angry_count}}, {{happy_count}}, {{fear_count}}, {{sad_count}}, {{surprise_count}}, {{neutral_count}}], "100%", 280);
+
+    </script>
+
+    <script>
+
+        var slider = document.querySelector('.global-sliders');
+        var slides = slider.querySelectorAll('.slick-slider__singles');
+        var dots = slider.querySelectorAll('.slick-dots button');
+        var currentSlide = 0;
+        var slideInterval = setInterval(nextSlide, 5000);
+
+        function nextSlide() {
+            dots = slider.querySelectorAll('.slick-dots button');
+            slides[currentSlide].classList.remove('active');
+            if (dots.length > 0) {
+                dots[currentSlide].classList.remove('active');
+            }
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+            if (dots.length > 0) {
+                dots[currentSlide].click(); // Trigger click event on dot
+            }
+        }
+
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].addEventListener('click', function (event) {
+                console.log("Prevent default")
+                event.preventDefault(); // Prevent default anchor behavior
+                slides[currentSlide].classList.remove('slick-current slick-active');
+                if (dots.length > 0) {
+                    dots[currentSlide].classList.remove('slick-current slick-active');
+                }
+                currentSlide = Array.prototype.indexOf.call(dots, this);
+                slides[currentSlide].classList.add('active');
+                if (dots.length > 0) {
+                    dots[currentSlide].parentElement.classList.add("slick-active")
+                }
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
+        if (slider.getAttribute('data-autoplay') === 'true') {
+            slider.addEventListener('mouseover', function () {
+                clearInterval(slideInterval);
+            });
+
+            slider.addEventListener('mouseout', function () {
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
+
+    </script>
+{% endblock %}
+
