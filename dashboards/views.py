@@ -1,15 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView
 
 from emotions.models import Report
 
 
 # Create your views here.
 
-class DashboardView(View):
+class DashboardView(LoginRequiredMixin, View):
 
     def get(self, request):
         reports = Report.objects.filter(user=self.request.user)
@@ -32,12 +30,12 @@ class DashboardView(View):
 
         context = {
             "reports": reports,
-            "disgust_count": disgust_count,
-            "angry_count": angry_count,
-            "happy_count": happy_count,
-            "fear_count": fear_count,
-            "sad_count": sad_count,
-            "surprise_count": surprise_count,
-            "neutral_count": neutral_count,
+            "disgust_count": round(disgust_count, 2),
+            "angry_count": round(angry_count, 2),
+            "happy_count": round(happy_count, 2),
+            "fear_count": round(fear_count, 2),
+            "sad_count": round(sad_count, 2),
+            "surprise_count": round(surprise_count, 2),
+            "neutral_count": round(neutral_count, 2),
         }
         return render(request, "dashboard.html", context)

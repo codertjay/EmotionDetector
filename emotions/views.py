@@ -9,11 +9,10 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView, DetailView
-from matplotlib import pyplot as plt
 
 from emotions.models import Report
 from emotions.tasks import generate_data
-from emotions.utils import base64_to_image, resize_cv2_image
+from emotions.utils import resize_cv2_image
 
 
 class ReportCreateView(LoginRequiredMixin, View):
@@ -75,6 +74,48 @@ def emotion_detection(request, id):
     return render(request, 'emotion_detection.html', context)
 
 
+def report_stat_view(request, id):
+    """
+     this is used to get the current status of the report which is currently life
+     in which a request  be comming from the front end to the backend every  minutes
+     """
+
+    report = Report.objects.filter(id=id).first()
+    if not report:
+        return JsonResponse({"error": "No report with this id"}, status=400)
+    data = {
+        "disgust": report.percentage_disgust,
+        "angry": report.percentage_angry,
+        "happy": report.percentage_happy,
+        "fear": report.percentage_fear,
+        "sad": report.percentage_sad,
+        "surprise": report.percentage_surprise,
+        "neutral": report.percentage_neutral,
+    }
+    return JsonResponse(data, status=200)
+
+
+def report_automated_view(request, id):
+    """
+    This view is use to show  more info compare to the stat like the pie chart
+    """
+    report = Report.objects.filter(id=id).first()
+    if not report:
+        return JsonResponse({"error": "No report with this id"}, status=400)
+    pie_chart = f"{request.get_host()}{report.chartImageURL()}"
+    data = {
+        "disgust": report.percentage_disgust,
+        "angry": report.percentage_angry,
+        "happy": report.percentage_happy,
+        "fear": report.percentage_fear,
+        "sad": report.percentage_sad,
+        "surprise": report.percentage_surprise,
+        "neutral": report.percentage_neutral,
+        "pie_chart": pie_chart,
+    }
+    return JsonResponse(data, status=200)
+
+
 def process_video_frame(request, id):
     #  get the report from the id passed
     report = Report.objects.filter(id=id).first()
@@ -100,7 +141,7 @@ def process_video_frame(request, id):
             # plt.show()
             # Perform additional processing on the image as needed
             # ...
-            generate_data(img.tolist(), report.id)
+            generate_data.delay(img.tolist(), report.id)
             # generate_data.delay(img.tolist(), report.id, report.user.id)
 
             # Example: Convert the processed image back to Base64 for sending back to the browser
