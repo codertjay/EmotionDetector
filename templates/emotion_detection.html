@@ -113,7 +113,8 @@
         <div class="overlay-buttons">
             <button id="start-button" class="btn btn-info"><i class="uil uil-play icon-size"></i></button>
             <button id="pause-button" class="btn btn-primary"><i class="uil uil-pause icon-size"></i></button>
-            <button id="stop-button" class="btn btn-danger"><a href="{% url "report_detail"  id %}" style="color: white"> <i
+            <button id="stop-button" class="btn btn-danger"><a href="{% url "report_detail"  id %}"
+                                                               style="color: white"> <i
                     class="uil uil-stop-circle icon-size"></i></a>
             </button>
             <button type="button" class="btn btn-primary hidden" data-bs-toggle="modal" id="model-button"
@@ -132,7 +133,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="d-flex justify-content-center align-items-center">
-                        <img src="" alt="" id="pie_chart" style="max-height: 40vh;object-fit: contain">
+                        <img src="" alt="" id="pie_chart" style="max-height: 45vh;object-fit: contain">
                     </div>
                     <div class="progress-wrap d-flex align-items-center mb-15" id="disgust_count">
                         <div class="progress">
@@ -277,6 +278,7 @@
                     videoElement.srcObject = mediaStream;
                 })
                 .catch(function (error) {
+                    alert("Error accessing camera")
                     console.log("Error accessing camera:", error);
                 });
         });
@@ -340,7 +342,7 @@
 
             // Set the interval to call the sendVideoFrame() function every 10 seconds
             // this is 10 seconds --> 10000
-            setInterval(sendVideoFrame, 30000);
+          setInterval(sendVideoFrame, 60000);
         });
 
     </script>
@@ -399,7 +401,7 @@
                     const progressBar = document.getElementById(key + '_count').querySelector('.progress-bar');
                     const progressPercentage = document.getElementById(key + '_count').querySelector('.progress-percentage');
                     progressBar.style.width = value + '%';
-                    progressPercentage.innerText = value + '%';
+                    progressPercentage.innerText = key +" "+value + '%';
 
                 }
             }
@@ -430,7 +432,7 @@
             }
 
             // Fetch data initially when the page loads
-            // fetchData();
+           //fetchData();
 
             // Set up repeating timer to fetch data every 10 minutes (600,000 milliseconds) 600000
             setInterval(fetchData, 1800000);

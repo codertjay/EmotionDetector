@@ -597,7 +597,7 @@ def generate_data(image, report_id):
                         emotion_score = round(emotion_score, 2)
                         # Increment the emotion count
                         if emotion_label == "angry":
-                            report.angry_count += 1
+                            report.annoyed_count += 1
                         elif emotion_label == "disgust":
                             report.disgust_count += 1
                         elif emotion_label == "fear":

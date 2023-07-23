@@ -33,89 +33,173 @@ class Report(models.Model):
     neutral_count = models.IntegerField(default=0)
     chart_image = models.ImageField(blank=True, null=True)
 
-    most_annoyed_image = models.ImageField(upload_to="images", blank=True, null=True)
-    most_annoyed_score = models.FloatField(blank=True, null=True, default=0.0)
-    most_annoyed_time = models.DateTimeField(blank=True, null=True)
+    most_angry_image = models.ImageField(upload_to="images", blank=True, null=True)
+    most_angry_score = models.FloatField(blank=True, null=True, default=0.0)
+    most_angry_time = models.DateTimeField(blank=True, null=True)
+    most_angry_face_x = models.IntegerField(blank=True, null=True)
+    most_angry_face_y = models.IntegerField(blank=True, null=True)
+    most_angry_face_width = models.IntegerField(blank=True, null=True)
+    most_angry_face_height = models.IntegerField(blank=True, null=True)
 
     most_disgust_image = models.ImageField(upload_to="images", blank=True, null=True)
     most_disgust_score = models.FloatField(blank=True, null=True, default=0.0)
     most_disgust_time = models.DateTimeField(blank=True, null=True)
+    most_disgust_face_x = models.IntegerField(blank=True, null=True)
+    most_disgust_face_y = models.IntegerField(blank=True, null=True)
+    most_disgust_face_width = models.IntegerField(blank=True, null=True)
+    most_disgust_face_height = models.IntegerField(blank=True, null=True)
 
     most_happy_image = models.ImageField(upload_to="images", blank=True, null=True)
     most_happy_score = models.FloatField(blank=True, null=True, default=0.0)
     most_happy_time = models.DateTimeField(blank=True, null=True)
+    most_happy_face_x = models.IntegerField(blank=True, null=True)
+    most_happy_face_y = models.IntegerField(blank=True, null=True)
+    most_happy_face_width = models.IntegerField(blank=True, null=True)
+    most_happy_face_height = models.IntegerField(blank=True, null=True)
 
     most_fear_image = models.ImageField(upload_to="images", blank=True, null=True)
     most_fear_score = models.FloatField(blank=True, null=True, default=0.0)
     most_fear_time = models.DateTimeField(blank=True, null=True)
+    most_fear_face_x = models.IntegerField(blank=True, null=True)
+    most_fear_face_y = models.IntegerField(blank=True, null=True)
+    most_fear_face_width = models.IntegerField(blank=True, null=True)
+    most_fear_face_height = models.IntegerField(blank=True, null=True)
 
     most_sad_image = models.ImageField(upload_to="images", blank=True, null=True)
     most_sad_score = models.FloatField(blank=True, null=True, default=0.0)
     most_sad_time = models.DateTimeField(blank=True, null=True)
+    most_sad_face_x = models.IntegerField(blank=True, null=True)
+    most_sad_face_y = models.IntegerField(blank=True, null=True)
+    most_sad_face_width = models.IntegerField(blank=True, null=True)
+    most_sad_face_height = models.IntegerField(blank=True, null=True)
 
     most_surprise_image = models.ImageField(upload_to="images", blank=True, null=True)
     most_surprise_score = models.FloatField(blank=True, null=True, default=0.0)
     most_surprise_time = models.DateTimeField(blank=True, null=True)
+    most_surprise_face_x = models.IntegerField(blank=True, null=True)
+    most_surprise_face_y = models.IntegerField(blank=True, null=True)
+    most_surprise_face_width = models.IntegerField(blank=True, null=True)
+    most_surprise_face_height = models.IntegerField(blank=True, null=True)
 
     most_neutral_image = models.ImageField(upload_to="images", blank=True, null=True)
     most_neutral_score = models.FloatField(blank=True, null=True, default=0.0)
     most_neutral_time = models.DateTimeField(blank=True, null=True)
+    most_neutral_face_x = models.IntegerField(blank=True, null=True)
+    most_neutral_face_y = models.IntegerField(blank=True, null=True)
+    most_neutral_face_width = models.IntegerField(blank=True, null=True)
+    most_neutral_face_height = models.IntegerField(blank=True, null=True)
 
-    male_most_annoyed_image = models.ImageField(upload_to="images", blank=True, null=True)
-    male_most_annoyed_score = models.FloatField(blank=True, null=True, default=0.0)
-    male_most_annoyed_time = models.DateTimeField(blank=True, null=True)
+    male_most_angry_image = models.ImageField(upload_to="images", blank=True, null=True)
+    male_most_angry_score = models.FloatField(blank=True, null=True, default=0.0)
+    male_most_angry_time = models.DateTimeField(blank=True, null=True)
+    male_most_angry_face_x = models.IntegerField(blank=True, null=True)
+    male_most_angry_face_y = models.IntegerField(blank=True, null=True)
+    male_most_angry_face_width = models.IntegerField(blank=True, null=True)
+    male_most_angry_face_height = models.IntegerField(blank=True, null=True)
 
     male_most_disgust_image = models.ImageField(upload_to="images", blank=True, null=True)
     male_most_disgust_score = models.FloatField(blank=True, null=True, default=0.0)
     male_most_disgust_time = models.DateTimeField(blank=True, null=True)
+    male_most_disgust_face_x = models.IntegerField(blank=True, null=True)
+    male_most_disgust_face_y = models.IntegerField(blank=True, null=True)
+    male_most_disgust_face_width = models.IntegerField(blank=True, null=True)
+    male_most_disgust_face_height = models.IntegerField(blank=True, null=True)
 
     male_most_happy_image = models.ImageField(upload_to="images", blank=True, null=True)
     male_most_happy_score = models.FloatField(blank=True, null=True, default=0.0)
     male_most_happy_time = models.DateTimeField(blank=True, null=True)
+    male_most_happy_face_x = models.IntegerField(blank=True, null=True)
+    male_most_happy_face_y = models.IntegerField(blank=True, null=True)
+    male_most_happy_face_width = models.IntegerField(blank=True, null=True)
+    male_most_happy_face_height = models.IntegerField(blank=True, null=True)
 
     male_most_fear_image = models.ImageField(upload_to="images", blank=True, null=True)
     male_most_fear_score = models.FloatField(blank=True, null=True, default=0.0)
     male_most_fear_time = models.DateTimeField(blank=True, null=True)
+    male_most_fear_face_x = models.IntegerField(blank=True, null=True)
+    male_most_fear_face_y = models.IntegerField(blank=True, null=True)
+    male_most_fear_face_width = models.IntegerField(blank=True, null=True)
+    male_most_fear_face_height = models.IntegerField(blank=True, null=True)
 
     male_most_sad_image = models.ImageField(upload_to="images", blank=True, null=True)
     male_most_sad_score = models.FloatField(blank=True, null=True, default=0.0)
     male_most_sad_time = models.DateTimeField(blank=True, null=True)
+    male_most_sad_face_x = models.IntegerField(blank=True, null=True)
+    male_most_sad_face_y = models.IntegerField(blank=True, null=True)
+    male_most_sad_face_width = models.IntegerField(blank=True, null=True)
+    male_most_sad_face_height = models.IntegerField(blank=True, null=True)
 
     male_most_surprise_image = models.ImageField(upload_to="images", blank=True, null=True)
     male_most_surprise_score = models.FloatField(blank=True, null=True, default=0.0)
     male_most_surprise_time = models.DateTimeField(blank=True, null=True)
+    male_most_surprise_face_x = models.IntegerField(blank=True, null=True)
+    male_most_surprise_face_y = models.IntegerField(blank=True, null=True)
+    male_most_surprise_face_width = models.IntegerField(blank=True, null=True)
+    male_most_surprise_face_height = models.IntegerField(blank=True, null=True)
 
     male_most_neutral_image = models.ImageField(upload_to="images", blank=True, null=True)
     male_most_neutral_score = models.FloatField(blank=True, null=True, default=0.0)
     male_most_neutral_time = models.DateTimeField(blank=True, null=True)
+    male_most_neutral_face_x = models.IntegerField(blank=True, null=True)
+    male_most_neutral_face_y = models.IntegerField(blank=True, null=True)
+    male_most_neutral_face_width = models.IntegerField(blank=True, null=True)
+    male_most_neutral_face_height = models.IntegerField(blank=True, null=True)
 
-    female_most_annoyed_image = models.ImageField(upload_to="images", blank=True, null=True)
-    female_most_annoyed_score = models.FloatField(blank=True, null=True, default=0.0)
-    female_most_annoyed_time = models.DateTimeField(blank=True, null=True)
+    female_most_angry_image = models.ImageField(upload_to="images", blank=True, null=True)
+    female_most_angry_score = models.FloatField(blank=True, null=True, default=0.0)
+    female_most_angry_time = models.DateTimeField(blank=True, null=True)
+    female_most_angry_face_x = models.IntegerField(blank=True, null=True)
+    female_most_angry_face_y = models.IntegerField(blank=True, null=True)
+    female_most_angry_face_width = models.IntegerField(blank=True, null=True)
+    female_most_angry_face_height = models.IntegerField(blank=True, null=True)
 
     female_most_disgust_image = models.ImageField(upload_to="images", blank=True, null=True)
     female_most_disgust_score = models.FloatField(blank=True, null=True, default=0.0)
     female_most_disgust_time = models.DateTimeField(blank=True, null=True)
+    female_most_disgust_face_x = models.IntegerField(blank=True, null=True)
+    female_most_disgust_face_y = models.IntegerField(blank=True, null=True)
+    female_most_disgust_face_width = models.IntegerField(blank=True, null=True)
+    female_most_disgust_face_height = models.IntegerField(blank=True, null=True)
 
     female_most_happy_image = models.ImageField(upload_to="images", blank=True, null=True)
     female_most_happy_score = models.FloatField(blank=True, null=True, default=0.0)
     female_most_happy_time = models.DateTimeField(blank=True, null=True)
+    female_most_happy_face_x = models.IntegerField(blank=True, null=True)
+    female_most_happy_face_y = models.IntegerField(blank=True, null=True)
+    female_most_happy_face_width = models.IntegerField(blank=True, null=True)
+    female_most_happy_face_height = models.IntegerField(blank=True, null=True)
 
     female_most_fear_image = models.ImageField(upload_to="images", blank=True, null=True)
     female_most_fear_score = models.FloatField(blank=True, null=True, default=0.0)
     female_most_fear_time = models.DateTimeField(blank=True, null=True)
+    female_most_fear_face_x = models.IntegerField(blank=True, null=True)
+    female_most_fear_face_y = models.IntegerField(blank=True, null=True)
+    female_most_fear_face_width = models.IntegerField(blank=True, null=True)
+    female_most_fear_face_height = models.IntegerField(blank=True, null=True)
 
     female_most_sad_image = models.ImageField(upload_to="images", blank=True, null=True)
     female_most_sad_score = models.FloatField(blank=True, null=True, default=0.0)
     female_most_sad_time = models.DateTimeField(blank=True, null=True)
+    female_most_sad_face_x = models.IntegerField(blank=True, null=True)
+    female_most_sad_face_y = models.IntegerField(blank=True, null=True)
+    female_most_sad_face_width = models.IntegerField(blank=True, null=True)
+    female_most_sad_face_height = models.IntegerField(blank=True, null=True)
 
     female_most_surprise_image = models.ImageField(upload_to="images", blank=True, null=True)
     female_most_surprise_score = models.FloatField(blank=True, null=True, default=0.0)
     female_most_surprise_time = models.DateTimeField(blank=True, null=True)
+    female_most_surprise_face_x = models.IntegerField(blank=True, null=True)
+    female_most_surprise_face_y = models.IntegerField(blank=True, null=True)
+    female_most_surprise_face_width = models.IntegerField(blank=True, null=True)
+    female_most_surprise_face_height = models.IntegerField(blank=True, null=True)
 
     female_most_neutral_image = models.ImageField(upload_to="images", blank=True, null=True)
     female_most_neutral_score = models.FloatField(blank=True, null=True, default=0.0)
     female_most_neutral_time = models.DateTimeField(blank=True, null=True)
+    female_most_neutral_face_x = models.IntegerField(blank=True, null=True)
+    female_most_neutral_face_y = models.IntegerField(blank=True, null=True)
+    female_most_neutral_face_width = models.IntegerField(blank=True, null=True)
+    female_most_neutral_face_height = models.IntegerField(blank=True, null=True)
 
     timestamp = models.DateTimeField(auto_now_add=True)
 
@@ -131,11 +215,11 @@ class Report(models.Model):
             # Check each image field for changes and clean up old image files
             image_fields = [
                 'chart_image',
-                'most_annoyed_image', 'most_disgust_image', 'most_happy_image', 'most_fear_image',
+                'most_angry_image', 'most_disgust_image', 'most_happy_image', 'most_fear_image',
                 'most_sad_image', 'most_surprise_image', 'most_neutral_image',
-                'male_most_annoyed_image', 'male_most_disgust_image', 'male_most_happy_image', 'male_most_fear_image',
+                'male_most_angry_image', 'male_most_disgust_image', 'male_most_happy_image', 'male_most_fear_image',
                 'male_most_sad_image', 'male_most_surprise_image', 'male_most_neutral_image',
-                'female_most_annoyed_image', 'female_most_disgust_image', 'female_most_happy_image',
+                'female_most_angry_image', 'female_most_disgust_image', 'female_most_happy_image',
                 'female_most_fear_image',
                 'female_most_sad_image', 'female_most_surprise_image', 'female_most_neutral_image',
             ]
@@ -191,7 +275,7 @@ class Report(models.Model):
     def percentage_sad(self):
         total = self.total_count
         if total > 0:
-            return (self.sad_count / total) * 100
+            return round((self.sad_count / total) * 100, 2)
         return 0
 
     @property

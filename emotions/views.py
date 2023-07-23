@@ -50,10 +50,11 @@ class ReportDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         report = Report.objects.filter(user=self.request.user)
         return report
+
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         if self.object:
-            self.object.status  = "DONE"
+            self.object.status = "DONE"
             self.object.save()
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
@@ -149,7 +150,6 @@ def process_video_frame(request, id):
             # Perform additional processing on the image as needed
             # ...
             generate_data.delay(img.tolist(), report.id)
-            # generate_data.delay(img.tolist(), report.id, report.user.id)
 
             # Example: Convert the processed image back to Base64 for sending back to the browser
             # _, buffer = cv2.imencode('.jpg', img)

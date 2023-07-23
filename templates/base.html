@@ -222,7 +222,17 @@
 {% endblock %}
 <script src="{% static "js/plugins.min.js" %}"></script>
 <script src="{% static "js/script.min.js" %}"></script>
+<script>
+    function printAsPDF(url) {
+        // Open the target page in a new window
+        const newWindow = window.open(url, '_blank');
 
+        // Wait for the window to load, then trigger the print dialog
+        newWindow.onload = function () {
+            newWindow.print();
+        };
+    }
+</script>
 
 </body>
 

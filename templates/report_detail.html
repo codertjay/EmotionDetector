@@ -1,25 +1,32 @@
 {% extends "base.html" %}
-
+{% block css %}
+    <style>
+        .report_image {
+            height: 20vh;
+            width: 100%;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex align-items-center justify-content-center">
-                <img src="{{ report.chartImageURL }}" alt=""
+                <img src="{{ report.chartImageURL }}" alt="" class="report_image"
                      style="box-shadow: #c2ffd5;border: 10px;height: 80vh;object-fit: fill;min-width: 60vw;">
             </div>
         </div>
         <hr class="mt-5" style="background-color: grey; ">
         <div class="h1 d-flex justify-content-center align-items-center mb-4 ">Dominant Emotions</div>
         <div class="row">
-            {% if report.most_annoyed_image %}
+            {% if report.most_angry_image %}
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.most_annoyed_image.url }}" alt="">
+                            <img src="{{ report.most_angry_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Angry </span>
-                                    <span>{{ report.most_annoyed_time }} </span>
+                                    <span>{{ report.most_angry_time }} </span>
                                 </div>
 
                             </figcaption>
@@ -27,11 +34,11 @@
                         <div class="progress-wrap d-flex align-items-center mb-15">
                             <div class="progress">
                                 <div class="progress-bar bg-secondary" role="progressbar"
-                                     style="width: {{ report.most_annoyed_score }}%;"
-                                     aria-valuenow="{{ report.most_annoyed_score }}"
+                                     style="width: {{ report.most_angry_score }}%;"
+                                     aria-valuenow="{{ report.most_angry_score }}"
                                      aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <span class="progress-percentage">{{ report.most_annoyed_score }}%</span>
+                            <span class="progress-percentage">{{ report.most_angry_score }}%</span>
                         </div>
                     </div>
                 </div>
@@ -40,7 +47,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.most_disgust_image.url }}" alt="">
+                            <img src="{{ report.most_disgust_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Disgust </span>
@@ -66,7 +73,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.most_happy_image.url }}" alt="">
+                            <img src="{{ report.most_happy_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Happy </span>
@@ -92,7 +99,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.most_fear_image.url }}" alt="">
+                            <img src="{{ report.most_fear_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Fear </span>
@@ -118,7 +125,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.most_sad_image.url }}" alt="">
+                            <img src="{{ report.most_sad_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Sad </span>
@@ -143,7 +150,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.most_surprise_image.url }}" alt="">
+                            <img src="{{ report.most_surprise_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Surprise </span>
@@ -169,7 +176,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25 pb-2">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.most_neutral_image.url }}" alt="">
+                            <img src="{{ report.most_neutral_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Neutral </span>
@@ -195,15 +202,15 @@
         <hr class="mt-5" style="background-color: grey; ">
         <div class="h1 d-flex justify-content-center align-items-center mb-4 ">Male Dominant Emotions</div>
         <div class="row">
-            {% if report.male_most_annoyed_image %}
+            {% if report.male_most_angry_image %}
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.male_most_annoyed_image.url }}" alt="">
+                            <img src="{{ report.male_most_angry_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
-                                    <span>Annoyed </span>
-                                    <span>{{ report.male_most_annoyed_time }} </span>
+                                    <span>angry </span>
+                                    <span>{{ report.male_most_angry_time }} </span>
                                 </div>
 
                             </figcaption>
@@ -211,12 +218,12 @@
                         <div class="progress-wrap d-flex align-items-center mb-15">
                             <div class="progress">
                                 <div class="progress-bar bg-secondary" role="progressbar"
-                                     style="width: {{ report.male_most_annoyed_score }}%;"
-                                     aria-valuenow="{{ report.male_most_annoyed_score }}"
+                                     style="width: {{ report.male_most_angry_score }}%;"
+                                     aria-valuenow="{{ report.male_most_angry_score }}"
                                      aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
 
-                            <span class="progress-percentage">{{ report.male_most_annoyed_score }}%</span>
+                            <span class="progress-percentage">{{ report.male_most_angry_score }}%</span>
                         </div>
                     </div>
                 </div>
@@ -225,7 +232,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.male_most_disgust_image.url }}" alt="">
+                            <img src="{{ report.male_most_disgust_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Disgust </span>
@@ -251,7 +258,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.male_most_happy_image.url }}" alt="">
+                            <img src="{{ report.male_most_happy_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Happy </span>
@@ -277,7 +284,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.male_most_fear_image.url }}" alt="">
+                            <img src="{{ report.male_most_fear_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Fear </span>
@@ -303,7 +310,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.male_most_sad_image.url }}" alt="">
+                            <img src="{{ report.male_most_sad_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Sad </span>
@@ -329,7 +336,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.male_most_surprise_image.url }}" alt="">
+                            <img src="{{ report.male_most_surprise_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Surprise </span>
@@ -354,7 +361,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25 pb-2">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.male_most_neutral_image.url }}" alt="">
+                            <img src="{{ report.male_most_neutral_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Neutral </span>
@@ -379,16 +386,16 @@
         <hr class="mt-5" style="background-color: grey; ">
         <div class="h1 d-flex justify-content-center align-items-center mb-4 ">Female Dominant Emotions</div>
         <div class="row">
-            {% if report.female_most_annoyed_image %}
+            {% if report.female_most_angry_image %}
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.female_most_annoyed_image.url }}" alt="">
+                            <img src="{{ report.female_most_angry_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
-                                    <span>Annoyed </span>
+                                    <span>angry </span>
 
-                                    <span>{{ report.female_most_annoyed_time }} </span>
+                                    <span>{{ report.female_most_angry_time }} </span>
                                 </div>
 
                             </figcaption>
@@ -396,11 +403,11 @@
                         <div class="progress-wrap d-flex align-items-center mb-15">
                             <div class="progress">
                                 <div class="progress-bar bg-secondary" role="progressbar"
-                                     style="width: {{ report.female_most_annoyed_score }}%;"
-                                     aria-valuenow="{{ report.female_most_annoyed_score }}"
+                                     style="width: {{ report.female_most_angry_score }}%;"
+                                     aria-valuenow="{{ report.female_most_angry_score }}"
                                      aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <span class="progress-percentage">{{ report.female_most_annoyed_score }}%</span>
+                            <span class="progress-percentage">{{ report.female_most_angry_score }}%</span>
                         </div>
                     </div>
                 </div>
@@ -409,7 +416,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.female_most_disgust_image.url }}" alt="">
+                            <img src="{{ report.female_most_disgust_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Disgust </span>
@@ -434,7 +441,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.female_most_happy_image.url }}" alt="">
+                            <img src="{{ report.female_most_happy_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Happy</span>
@@ -459,7 +466,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.female_most_fear_image.url }}" alt="">
+                            <img src="{{ report.female_most_fear_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Fear </span>
@@ -485,7 +492,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.female_most_sad_image.url }}" alt="">
+                            <img src="{{ report.female_most_sad_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Sad </span>
@@ -511,7 +518,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.female_most_surprise_image.url }}" alt="">
+                            <img src="{{ report.female_most_surprise_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Surprise </span>
@@ -537,7 +544,7 @@
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25 pb-2">
                     <div class="feature-cards feature-card--1">
                         <figure class="feather-cards__figure">
-                            <img src="{{ report.female_most_neutral_image.url }}" alt="">
+                            <img src="{{ report.female_most_neutral_image.url }}" alt="" class="report_image">
                             <figcaption>
                                 <div class="feature-cards__top">
                                     <span>Neutral </span>
