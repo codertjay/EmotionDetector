@@ -6,7 +6,7 @@ from django.utils import timezone
 from emotions.models import Report
 from emotions.utils import convert_opencv_to_image
 
-# os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 import numpy as np
 
@@ -33,7 +33,9 @@ def verify_image_if_same(current_image, report, exclude_name):
                         result = DeepFace.verify(img1_path=f"media/{current_image}",
                                                  img2_path=f"media/{getattr(report, field.name)}",
                                                  enforce_detection=False)
+                        print("Verifying image")
                         if result.get("verified"):
+                            print("Image verified")
                             # set the value of the image to none
                             setattr(report, field.name, None)
                             report.save()
@@ -46,7 +48,11 @@ def verify_image_if_same(current_image, report, exclude_name):
                         result = DeepFace.verify(img1_path=f"media/{current_image}",
                                                  img2_path=f"media/{getattr(report, field.name)}",
                                                  enforce_detection=False)
+                        print("Verifying image")
+
                         if result.get("verified"):
+                            print("Image verified")
+
                             # set the value of that image to none
                             setattr(report, field.name, None)
                             report.save()

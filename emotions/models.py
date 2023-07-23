@@ -163,49 +163,49 @@ class Report(models.Model):
     def percentage_disgust(self):
         total = self.total_count
         if total > 0:
-            return (self.disgust_count / total) * 100
+            return round((self.disgust_count / total) * 100, 2)
         return 0
 
     @property
     def percentage_angry(self):
         total = self.total_count
         if total > 0:
-            return (self.angry_count / total) * 100
+            return round((self.angry_count / total) * 100, 2)
         return 0
 
     @property
     def percentage_happy(self):
         total = self.total_count
         if total > 0:
-            return (self.happy_count / total) * 100
+            return round((self.happy_count / total) * 100, 2)
         return 0
 
     @property
     def percentage_fear(self):
         total = self.total_count
         if total > 0:
-            return (self.happy_count / total) * 100
+            return round((self.fear_count / total) * 100, 2)
         return 0
 
     @property
     def percentage_sad(self):
         total = self.total_count
         if total > 0:
-            return (self.happy_count / total) * 100
+            return (self.sad_count / total) * 100
         return 0
 
     @property
     def percentage_surprise(self):
         total = self.total_count
         if total > 0:
-            return (self.happy_count / total) * 100
+            return round((self.surprise_count / total) * 100, 2)
         return 0
 
     @property
     def percentage_neutral(self):
         total = self.total_count
         if total > 0:
-            return (self.happy_count / total) * 100
+            return round((self.neutral_count / total) * 100, 2)
         return 0
 
     @property
