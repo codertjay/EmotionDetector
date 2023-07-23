@@ -60,7 +60,7 @@
         /* Add your custom CSS styles here */
         .icon-size {
             /* Adjust the font size to increase or decrease the icon size */
-            font-size: 24px;
+            font-size: 28px;
         }
 
 
@@ -113,7 +113,9 @@
         <div class="overlay-buttons">
             <button id="start-button" class="btn btn-info"><i class="uil uil-play icon-size"></i></button>
             <button id="pause-button" class="btn btn-primary"><i class="uil uil-pause icon-size"></i></button>
-            <button id="stop-button" class="btn btn-danger"><i class="uil uil-stop-circle icon-size"></i></button>
+            <button id="stop-button" class="btn btn-danger"><a href="{% url "report_detail"  id %}" style="color: white"> <i
+                    class="uil uil-stop-circle icon-size"></i></a>
+            </button>
             <button type="button" class="btn btn-primary hidden" data-bs-toggle="modal" id="model-button"
                     data-bs-target="#modal-basic"><i class="uil uil-info icon-size"></i>
             </button>
@@ -129,8 +131,9 @@
                     <h6 class="modal-title">Report Info</h6>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="" id="pie_chart">
-
+                    <div class="d-flex justify-content-center align-items-center">
+                        <img src="" alt="" id="pie_chart" style="max-height: 40vh;object-fit: contain">
+                    </div>
                     <div class="progress-wrap d-flex align-items-center mb-15" id="disgust_count">
                         <div class="progress">
                             <div class="progress-bar bg-secondary" role="progressbar"
@@ -337,7 +340,7 @@
 
             // Set the interval to call the sendVideoFrame() function every 10 seconds
             // this is 10 seconds --> 10000
-            setInterval(sendVideoFrame, 10000);
+            setInterval(sendVideoFrame, 30000);
         });
 
     </script>
@@ -389,11 +392,15 @@
             // Function to update the progress bars and percentages
             function updateProgress(data) {
                 for (const [key, value] of Object.entries(data)) {
+                    if (key === "pie_chart") {
+                        continue
+                    }
+                    console.log("the key", key)
                     const progressBar = document.getElementById(key + '_count').querySelector('.progress-bar');
                     const progressPercentage = document.getElementById(key + '_count').querySelector('.progress-percentage');
-
                     progressBar.style.width = value + '%';
                     progressPercentage.innerText = value + '%';
+
                 }
             }
 
@@ -423,10 +430,10 @@
             }
 
             // Fetch data initially when the page loads
-            fetchData();
+            // fetchData();
 
             // Set up repeating timer to fetch data every 10 minutes (600,000 milliseconds) 600000
-            // setInterval(fetchData, 600000);
+            setInterval(fetchData, 1800000);
         });
 
     </script>

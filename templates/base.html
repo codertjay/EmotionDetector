@@ -48,24 +48,18 @@
 
         <div class="navbar-right">
             <ul class="navbar-right__menu">
-                {% comment %}     <li class="nav-search">
-                    <a href="#" class="search-toggle">
-                        <i class="uil uil-search"></i>
-                        <i class="uil uil-times"></i>
-                    </a>
-                    <form action="/" class="search-form-topMenu">
-                        <span class="search-icon uil uil-search"></span>
-                        <input class="form-control me-sm-2 box-shadow-none" type="search" placeholder="Search..."
-                               aria-label="Search">
-                    </form>
-                </li>{% endcomment %}
 
 
                 <li class="nav-author">
                     <div class="dropdown-custom">
-                        <a href="javascript:;" class="nav-item-toggle"><img
-                                src="{% static 'img/author-nav.jpg' %}" alt=""
-                                class=" rounded-circle">
+                        <a href="{% url "user_profile" %}" class="nav-item-toggle"><img
+                                {% if request.user.user_profile.profileImageURL %}
+                                    src="{{ request.user.user_profile.profileImageURL }}"
+                                {% else %}
+                                    src="{% static 'img/logo.png' %}"
+                                {% endif %}
+                                    alt=""
+                                    class=" rounded-circle">
                             <span class="nav-item__title">{{ request.user.username }}<i
                                     class="las la-angle-down nav-item__arrow"></i></span>
                         </a>
@@ -73,15 +67,22 @@
                             <div class="dropdown-wrapper">
                                 <div class="nav-author__info">
                                     <div class="author-img">
-                                        <img src="{% static 'img/author-nav.jpg' %}" alt="" class="rounded-circle">
+
+                                        <img
+                                                {% if request.user.user_profile.profileImageURL %}
+                                                    src="{{ request.user.user_profile.profileImageURL }}"
+                                                {% else %}
+                                                    src="{% static 'img/logo.png' %}"
+                                                {% endif %}
+                                                    alt="" class="rounded-circle">
                                     </div>
                                     <div>
-                                        <h6>{{ request.user.username }}</h6>
+                                        <a href="{% url "user_profile" %}"><h6>{{ request.user.username }}</h6></a>
                                     </div>
                                 </div>
                                 <div class="nav-author__options">
 
-                                    <a href="{% url "account_logout" %}" class="nav-author__signout">
+                                    <a href="{% url "custom_logout" %}" class="nav-author__signout">
                                         <i class="uil uil-sign-out-alt"></i> Sign Out</a>
                                 </div>
                             </div>
@@ -89,7 +90,6 @@
                         </div>
                     </div>
                 </li>
-
             </ul>
 
             <div class="navbar-right__mobileAction d-md-none">

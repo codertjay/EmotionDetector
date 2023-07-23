@@ -50,6 +50,13 @@ class ReportDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         report = Report.objects.filter(user=self.request.user)
         return report
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object:
+            self.object.status  = "DONE"
+            self.object.save()
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
 
 
 class ReportDeleteView(LoginRequiredMixin, View):
@@ -102,7 +109,7 @@ def report_automated_view(request, id):
     report = Report.objects.filter(id=id).first()
     if not report:
         return JsonResponse({"error": "No report with this id"}, status=400)
-    pie_chart = f"{request.get_host()}{report.chartImageURL()}"
+    pie_chart = f"http://{request.get_host()}{report.chartImageURL()}"
     data = {
         "disgust": report.percentage_disgust,
         "angry": report.percentage_angry,
@@ -131,8 +138,8 @@ def process_video_frame(request, id):
             np_array = np.frombuffer(base64.b64decode(img_encoded), dtype=np.uint8)
             img = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
             # resize the image
-            # img = cv2.resize(img, (1000, 1000))
-            img = resize_cv2_image(img, 750, 750)
+            img = cv2.resize(img, (1000, 1000))
+            # img = resize_cv2_image(img, 750, 750)
 
             # for debugging
             # cv2.imwrite("media.jpeg", img)

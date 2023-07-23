@@ -20,7 +20,7 @@ class Report(models.Model):
     slug = models.SlugField(max_length=500, blank=True, null=True)
 
     status = models.CharField(max_length=250, default="PENDING", choices=(
-        ("ACTIVE", "ACTIVE"),
+        ("DONE", "DONE"),
         ("PENDING", "PENDING"),
     ))
     #  the count for generating the pie chart
@@ -118,6 +118,9 @@ class Report(models.Model):
     female_most_neutral_time = models.DateTimeField(blank=True, null=True)
 
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-id"]
 
     def save(self, *args, **kwargs):
         # Check if the object is being updated (has a primary key) and call the cleanup_images method

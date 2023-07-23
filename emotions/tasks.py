@@ -6,7 +6,7 @@ from django.utils import timezone
 from emotions.models import Report
 from emotions.utils import convert_opencv_to_image
 
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
+# os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 import numpy as np
 
@@ -27,7 +27,7 @@ def verify_image_if_same(current_image, report, exclude_name):
         for field in report._meta.get_fields():
             if str(field.name).startswith("most"):
                 if isinstance(report._meta.get_field(field.name), models.ImageField):
-                    #  if it starts with most just continue
+                    #  if it starts with most just continue or in exclude fields
                     if field.name not in exclude_name:
 
                         result = DeepFace.verify(img1_path=f"media/{current_image}",
@@ -40,15 +40,17 @@ def verify_image_if_same(current_image, report, exclude_name):
                             return True
 
             else:
-                if isinstance(report._meta.get_field(field.name), models.ImageField):
-                    result = DeepFace.verify(img1_path=f"media/{current_image}",
-                                             img2_path=f"media/{getattr(report, field.name)}",
-                                             enforce_detection=False)
-                    if result.get("verified"):
-                        # set the value of that image to none
-                        setattr(report, field.name, None)
-                        report.save()
-                        return True
+                #  if it starts with most just continue or in exclude fields
+                if field.name not in exclude_name:
+                    if isinstance(report._meta.get_field(field.name), models.ImageField):
+                        result = DeepFace.verify(img1_path=f"media/{current_image}",
+                                                 img2_path=f"media/{getattr(report, field.name)}",
+                                                 enforce_detection=False)
+                        if result.get("verified"):
+                            # set the value of that image to none
+                            setattr(report, field.name, None)
+                            report.save()
+                            return True
     except Exception as a:
         print("Error occurred ", a)
     return False
@@ -325,15 +327,17 @@ def generate_data(image, report_id):
     try:
         print("analyzing")
         detected_faces = DeepFace.analyze(image, actions=('emotion', 'gender',), enforce_detection=True)
+        # Deepface returns a list of emotions with the regions
         """
-        Deepface returns a list of emotions with the regions
-        [{'emotion': {'angry': 0.0005200124033576984, 'disgust': 6.884869604224655e-11,
-                                       'fear': 0.0001671884078467515, 'happy': 0.0008500899236528251,
-                                       'sad': 99.99600052809718, 'surprise': 4.1343011124876384e-11,
+
+        detected_faces = [{'emotion': {'angry': 0.0005200124033576984, 'disgust': 6.884869604224655e-11,
+                                       'sad': 0.0001671884078467515, 'happy': 0.0008500899236528251,
+                                       'fear': 99.99600052809718, 'surprise': 4.1343011124876384e-11,
                                        'neutral': 0.0024638100162230813}, 'dominant_emotion': 'sad',
                            'region': {'x': 0, 'y': 0, 'w': 400, 'h': 400},
                            'gender': {'Woman': 2.7019817382097244, 'Man': 97.29802012443542},
                            'dominant_gender': 'Man'}]
+
         """
 
         if detected_faces is not None:

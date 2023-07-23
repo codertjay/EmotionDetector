@@ -18,6 +18,7 @@
                             <img src="{{ report.most_annoyed_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Angry </span>
                                     <span>{{ report.most_annoyed_time }} </span>
                                 </div>
 
@@ -42,6 +43,8 @@
                             <img src="{{ report.most_disgust_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Disgust </span>
+
                                     <span>{{ report.most_disgust_time }} </span>
                                 </div>
 
@@ -66,6 +69,8 @@
                             <img src="{{ report.most_happy_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Happy </span>
+
                                     <span>{{ report.most_happy_time }} </span>
                                 </div>
 
@@ -90,6 +95,8 @@
                             <img src="{{ report.most_fear_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Fear </span>
+
                                     <span>{{ report.most_fear_time }} </span>
                                 </div>
 
@@ -114,6 +121,7 @@
                             <img src="{{ report.most_sad_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Sad </span>
                                     <span>{{ report.most_sad_time }} </span>
                                 </div>
 
@@ -138,6 +146,8 @@
                             <img src="{{ report.most_surprise_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Surprise </span>
+
                                     <span>{{ report.most_surprise_time }} </span>
                                 </div>
 
@@ -162,6 +172,8 @@
                             <img src="{{ report.most_neutral_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Neutral </span>
+
                                     <span>{{ report.most_neutral_time }} </span>
                                 </div>
 
@@ -190,6 +202,7 @@
                             <img src="{{ report.male_most_annoyed_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Annoyed </span>
                                     <span>{{ report.male_most_annoyed_time }} </span>
                                 </div>
 
@@ -202,6 +215,7 @@
                                      aria-valuenow="{{ report.male_most_annoyed_score }}"
                                      aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
+
                             <span class="progress-percentage">{{ report.male_most_annoyed_score }}%</span>
                         </div>
                     </div>
@@ -214,6 +228,8 @@
                             <img src="{{ report.male_most_disgust_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Disgust </span>
+
                                     <span>{{ report.male_most_disgust_time }} </span>
                                 </div>
 
@@ -238,6 +254,8 @@
                             <img src="{{ report.male_most_happy_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Happy </span>
+
                                     <span>{{ report.male_most_happy_time }} </span>
                                 </div>
 
@@ -262,6 +280,8 @@
                             <img src="{{ report.male_most_fear_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Fear </span>
+
                                     <span>{{ report.male_most_fear_time }} </span>
                                 </div>
 
@@ -286,6 +306,8 @@
                             <img src="{{ report.male_most_sad_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Sad </span>
+
                                     <span>{{ report.male_most_sad_time }} </span>
                                 </div>
 
@@ -310,6 +332,7 @@
                             <img src="{{ report.male_most_surprise_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Surprise </span>
                                     <span>{{ report.male_most_surprise_time }} </span>
                                 </div>
 
@@ -334,6 +357,7 @@
                             <img src="{{ report.male_most_neutral_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Neutral </span>
                                     <span>{{ report.male_most_neutral_time }} </span>
                                 </div>
 
@@ -353,7 +377,7 @@
             {% endif %}
         </div>
         <hr class="mt-5" style="background-color: grey; ">
-        <div class="h1 d-flex justify-content-center align-items-center mb-4 ">FeMale Dominant Emotions</div>
+        <div class="h1 d-flex justify-content-center align-items-center mb-4 ">Female Dominant Emotions</div>
         <div class="row">
             {% if report.female_most_annoyed_image %}
                 <div class="col-xxl-3 col-lg-4 col-md-6 mb-25">
@@ -362,6 +386,8 @@
                             <img src="{{ report.female_most_annoyed_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Annoyed </span>
+
                                     <span>{{ report.female_most_annoyed_time }} </span>
                                 </div>
 
@@ -386,6 +412,7 @@
                             <img src="{{ report.female_most_disgust_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Disgust </span>
                                     <span>{{ report.female_most_disgust_time }} </span>
                                 </div>
 
@@ -410,6 +437,7 @@
                             <img src="{{ report.female_most_happy_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Happy</span>
                                     <span>{{ report.female_most_happy_time }} </span>
                                 </div>
 
@@ -434,6 +462,8 @@
                             <img src="{{ report.female_most_fear_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Fear </span>
+
                                     <span>{{ report.female_most_fear_time }} </span>
                                 </div>
 
@@ -458,6 +488,8 @@
                             <img src="{{ report.female_most_sad_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Sad </span>
+
                                     <span>{{ report.female_most_sad_time }} </span>
                                 </div>
 
@@ -482,6 +514,8 @@
                             <img src="{{ report.female_most_surprise_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Surprise </span>
+
                                     <span>{{ report.female_most_surprise_time }} </span>
                                 </div>
 
@@ -506,6 +540,8 @@
                             <img src="{{ report.female_most_neutral_image.url }}" alt="">
                             <figcaption>
                                 <div class="feature-cards__top">
+                                    <span>Neutral </span>
+
                                     <span>{{ report.female_most_neutral_time }} </span>
                                 </div>
 
