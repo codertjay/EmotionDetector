@@ -320,7 +320,8 @@ class Report(models.Model):
 
         labels = non_zero_labels
         values = non_zero_values
-
+        # switch backend
+        plt.switch_backend('Agg')
         # Set the figure size
         plt.figure(figsize=(8, 8))
         # Create the pie chart

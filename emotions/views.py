@@ -149,6 +149,7 @@ def process_video_frame(request, id):
             # plt.show()
             # Perform additional processing on the image as needed
             # ...
+            # celery
             generate_data.delay(img.tolist(), report.id)
 
             # Example: Convert the processed image back to Base64 for sending back to the browser
