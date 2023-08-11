@@ -10,8 +10,7 @@ placeholders with actual information specific to your project:
 
 ![Emotion Detector Logo](path_to_logo.png)
 
-Welcome to the Emotion Detector Django project! This project aims to analyze and detect emotions from text input using
-Natural Language Processing techniques.
+Welcome to the Emotion Detector Django project! This project aims to analyze and detect emotions from web-rct images and implementing to open cv.
 
 ## Table of Contents
 
