@@ -140,23 +140,10 @@ def process_video_frame(request, id):
             img = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
             # resize the image
             img = cv2.resize(img, (1000, 1000))
-            # img = resize_cv2_image(img, 750, 750)
 
-            # for debugging
-            # cv2.imwrite("media.jpeg", img)
-            # img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            # plt.imshow(img_rgb)
-            # plt.show()
-            # Perform additional processing on the image as needed
-            # ...
             # celery
             generate_data.delay(img.tolist(), report.id)
 
-            # Example: Convert the processed image back to Base64 for sending back to the browser
-            # _, buffer = cv2.imencode('.jpg', img)
-            # frame_base64 = base64.b64encode(buffer).decode('utf-8')
-
-            # Return the processed frame as JSON response
             return JsonResponse({'processed_frame': "frame_base64"})
 
         return JsonResponse({'error': 'Invalid request'})

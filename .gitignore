@@ -5,3 +5,6 @@
 /db.sqlite
 /NewProject.sqlite
 /media/images/*
+
+.env
+Test

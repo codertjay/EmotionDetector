@@ -10,7 +10,8 @@ placeholders with actual information specific to your project:
 
 ![Emotion Detector Logo](path_to_logo.png)
 
-Welcome to the Emotion Detector Django project! This project aims to analyze and detect emotions from web-rct images and implementing to open cv.
+Welcome to the Emotion Detector Django project! This project aims to analyze and detect emotions from web-rct images and
+implementing to open cv.
 
 ## Table of Contents
 
@@ -101,9 +102,9 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 | Task Name                                                  | Week 1   | Week 2   | Week 3   | Week 4   | Week 5   | Week 6   | Week 7   | Week 8   | Week 9   |
 |------------------------------------------------------------|----------|----------|----------|----------|----------|----------|----------|----------|----------|
 | 1. Project planning and scoping                            | ✅        | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| 2. Research on road sign detection and recognition systems | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| 3. Data Collection and Preprocessing                       | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| 4. Trainging and testing of deep learning models           | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+| 2. Research on road sign detection and recognition systems | -------- | ✅        | ✅        | -------- | -------- | -------- | -------- | -------- | -------- |
+| 3. Data Collection and Preprocessing                       | -------- | -------- | -------- | ✅        | ✅        | ✅        | -------- | -------- | -------- |
+| 4. Build Project and testing of deep learning models       | -------- | -------- | -------- | -------- | -------- | -------- | ✅        | ✅        | ✅        |
 | 5. Integration with Web application and hardware testing   | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 | 6. User Interface development                              | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
 | 7. System integration and testing                          | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
