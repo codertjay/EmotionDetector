@@ -1,9 +1,5 @@
 # EmotionDetector
 
-This is used to detect emeotio and generate a report
-Sure, here's a sample README for your Django project that you can use as a starting point. Make sure to replace
-placeholders with actual information specific to your project:
-
 ---
 
 # Emotion Detector Django Project
@@ -34,10 +30,10 @@ Before you begin, ensure you have met the following requirements:
 
 ### Installation
 
-1. Clone this repository:
+1. Extract the zip file:
 
 ```bash
-git clone https://github.com/codertjay/EmotionDetector.git
+Extract the zip file and open the terminal
 ```
 
 2. Navigate to the project directory:
@@ -176,23 +172,6 @@ for your specific use cases.
 ```
 
 8. Open your web browser and navigate to `http://127.0.0.1:8000/` to access the Emotion Detector app.
-
-## Usage
-
-1. On the home page, enter a piece of text in the input field and click the "Analyze" button.
-2. The app will process the text and display the detected emotion along with a confidence score.
-
-Feel free to explore the app and its features further!
-
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push your changes to your forked repository.
-5. Open a pull request describing your changes.
 
 ---
 
