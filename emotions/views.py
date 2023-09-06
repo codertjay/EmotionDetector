@@ -16,6 +16,9 @@ from emotions.utils import resize_cv2_image
 
 
 class ReportCreateView(LoginRequiredMixin, View):
+    """
+    this is used to create a new Report
+    """
 
     def get(self, request):
         return render(request, "report_create.html")
@@ -31,6 +34,9 @@ class ReportCreateView(LoginRequiredMixin, View):
 
 
 class ReportListView(LoginRequiredMixin, ListView):
+    """
+    this is used to list all the Report
+    """
     paginate_by = 10
     queryset = Report.objects.all()
     template_name = "index.html"
@@ -42,6 +48,9 @@ class ReportListView(LoginRequiredMixin, ListView):
 
 
 class ReportDetailView(LoginRequiredMixin, DetailView):
+    """
+    this is used to retrieve a Report
+    """
     paginate_by = 10
     queryset = Report.objects.all()
     template_name = "report_detail.html"

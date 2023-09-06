@@ -8,7 +8,7 @@ placeholders with actual information specific to your project:
 
 # Emotion Detector Django Project
 
-![Emotion Detector Logo](path_to_logo.png)
+![Emotion Detector Logo](staticfiles/img/logo-dark.png)
 
 Welcome to the Emotion Detector Django project! This project aims to analyze and detect emotions from web-rct images and
 implementing to open cv.
@@ -65,7 +65,8 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-open a new terminal and run python3 to download the model
+open a new terminal and run python3 to download the model and make sure you are with in the virtual environment of the
+project
 
 ```
 python3
@@ -78,7 +79,103 @@ DeepFace.build_model("VGG-Face")
 
 ```
 
-6. Open your web browser and navigate to `http://127.0.0.1:8000/` to access the Emotion Detector app.
+6. Redis Configuration
+
+To install Redis on a Linux system, you can follow these general steps. The exact commands may vary slightly depending
+on your Linux distribution. Here, I'll provide instructions for a few popular distributions: Ubuntu, CentOS, and Debian.
+
+### Ubuntu
+
+1. Update the package list to make sure you have the latest information about available packages:
+
+   ```bash
+   sudo apt update
+   ```
+
+2. Install Redis:
+
+   ```bash
+   sudo apt install redis-server
+   ```
+
+3. Start the Redis service and enable it to start on boot:
+
+   ```bash
+   sudo systemctl start redis-server
+   sudo systemctl enable redis-server
+   ```
+
+4. Verify that Redis is running:
+
+   ```bash
+   sudo systemctl status redis-server
+   ```
+
+### CentOS
+
+1. Update the package list:
+
+   ```bash
+   sudo yum update
+   ```
+
+2. Install Redis:
+
+   ```bash
+   sudo yum install redis
+   ```
+
+3. Start the Redis service and enable it to start on boot:
+
+   ```bash
+   sudo systemctl start redis
+   sudo systemctl enable redis
+   ```
+
+4. Verify that Redis is running:
+
+   ```bash
+   sudo systemctl status redis
+   ```
+
+### Debian
+
+1. Update the package list:
+
+   ```bash
+   sudo apt update
+   ```
+
+2. Install Redis:
+
+   ```bash
+   sudo apt install redis-server
+   ```
+
+3. Start the Redis service and enable it to start on boot:
+
+   ```bash
+   sudo systemctl start redis-server
+   sudo systemctl enable redis-server
+   ```
+
+4. Verify that Redis is running:
+
+   ```bash
+   sudo systemctl status redis-server
+   ```
+
+After these steps, Redis should be installed and running on your Linux system. You can configure and use Redis as needed
+for your specific use cases.
+
+7. Run the celery worker: Open a new terminal and run the command below. Also make sure redis is active and running in
+   the background
+
+```bash
+ celery -A EmotionDetector worker --loglevel=info
+```
+
+8. Open your web browser and navigate to `http://127.0.0.1:8000/` to access the Emotion Detector app.
 
 ## Usage
 

@@ -598,11 +598,10 @@ def generate_data(image, report_id):
 
                     #  Only generate data if the emotion score is greater than 70
                     print("The emotion score: ", emotion_score)
-                    if emotion_score > 50:
+                    if emotion_score > 80:
                         # convert the image to temporary image for django to use
                         current_img = convert_opencv_to_image(current_img)
 
-                        print("Dominant reached here")
                         # update the dominant emotion
                         generate_most_dominant_emotion(emotion_label, emotion_score, current_img, report_id,
                                                        face['region'], clipped_image)
